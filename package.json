@@ -11,6 +11,22 @@
     "@types/node": "^16.11.22",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "5.9.0",
+    "@typescript-eslint/parser": "5.9.0",
+    "eslint": "8.6.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-typescript": "2.5.0",
+    "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jest": "25.3.4",
+    "eslint-plugin-jest-dom": "4.0.1",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-storybook": "0.5.5",
+    "eslint-plugin-testing-library": "5.0.3",
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -21,12 +37,24 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --fix",
+    "format": "prettier '**/*.{css,json,js,ts,tsx,md,mdx}'"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint",
+      "npm run test:nowatch"
+    ],
+    "*.{css,json,md,mdx}": [
+      "prettier --write"
     ]
   },
   "browserslist": {
