@@ -15,7 +15,7 @@ jobs:
    
     steps:
     - name: Eslint
-      run: nom run lint
+      run: npm run lint
     - name: Test run
       run: npm run test
 
