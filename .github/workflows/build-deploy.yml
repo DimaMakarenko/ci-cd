@@ -9,6 +9,16 @@ on:
       - main
 
 jobs:
+  test: 
+    name: Test
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: Eslint
+      run: nom run lint
+    - name: Test run
+      run: npm run test
+
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -27,9 +37,6 @@ jobs:
     
     - name: Build project
       run: npm run build
-    
-    - name: Run tests
-      run: npm run test
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
